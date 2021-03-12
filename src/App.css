@@ -1,0 +1,169 @@
+:root {
+  --black: #161a2b;
+  --white: #ffffff;
+}
+
+body {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: #161a2b;
+  background-image: none;
+} 
+
+
+.main-outer-div{
+  margin: 20px;
+  padding-top: 10px;
+  min-height: 85vh;
+}
+
+.form-div{
+  padding-bottom: 0px;
+  /* border-bottom: 3px solid rgba(255, 84, 17, 1); */
+}
+
+
+.tree-outer-div{
+  max-width:fit-content;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.tree-main-div{
+  text-align: center;
+  width:max-content;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.rows{
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.tree-node-div{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 45px;
+  height: 45px;
+  /* max-width: 40px; */
+  background-color: rgba(17, 122, 255, 1);
+  background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+  );
+  margin: auto;
+  color: #fff;
+  /* border: 1px solid white; */
+  text-align: center;
+  border-radius: 25%;
+  opacity: 0.99;
+}
+
+.transparent{
+  background-color: transparent;
+  background: none;
+  border: transparent;
+  /* border: 1px solid white; */
+  width: 30px;
+  height: 30px;
+}
+
+.searched{
+  background-color: rgb(84, 202, 29)  ;
+  background: linear-gradient(
+  90deg,
+  rgb(93, 187, 49) 0%,
+  rgb(84, 202, 29) 100%
+);
+}
+
+.bst-form {
+  margin-bottom: 32px;
+  margin-left: 4px;
+  margin-right: 4px;
+  max-width: fit-content;
+  display: inline-flex;
+}
+
+.operation-input{
+  padding: 12px;
+  border-radius: 4px;
+  border: 2px solid #5d0cff;
+  outline: none;
+  width: 80px;
+  background: transparent;
+  color: #fff;
+}
+
+
+/* Chrome, safari */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+.operation-button{
+  padding: 14px;
+  border: none;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+  90deg,
+  rgba(93, 12, 255, 1) 0%,
+  rgba(155, 0, 250, 1) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.clear-button{
+  padding: 14px;
+  border: none;
+  margin-left: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+      90deg,
+      rgb(93, 187, 49) 0%,
+      rgb(84, 202, 29) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.refresh-button{
+  padding: 14px;
+  border: none;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(
+      90deg,
+      rgb(93, 187, 49) 0%,
+      rgb(84, 202, 29) 100%
+  );
+  color: #fff;
+  text-transform: capitalize;
+}
+
