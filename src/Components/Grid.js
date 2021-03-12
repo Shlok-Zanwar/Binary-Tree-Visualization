@@ -30,7 +30,7 @@ function Grid({grid, loading, setLoading, search}) {
     const makeOneRow = (row, rowIndex) => 
         row.map((cell, cellIndex) => {
             if(cell !== 0){
-                console.log(cell, search);
+                // console.log(cell, search);
                 if(cell === parseInt(search)){
                     // alert(":hi");
                     return(
