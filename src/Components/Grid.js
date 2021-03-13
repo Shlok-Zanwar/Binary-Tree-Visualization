@@ -3,6 +3,7 @@ import LineTo from 'react-lineto'
 
 function Grid({grid, loading, setLoading, search}) {
 
+
     function debounce(fn, ms) {
         let timer
         return _ => {
@@ -14,6 +15,7 @@ function Grid({grid, loading, setLoading, search}) {
         };
     }
 
+
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
             setLoading(true);
@@ -21,6 +23,7 @@ function Grid({grid, loading, setLoading, search}) {
         
         window.addEventListener('resize', debouncedHandleResize)
     })
+
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 100);
@@ -30,9 +33,8 @@ function Grid({grid, loading, setLoading, search}) {
     const makeOneRow = (row, rowIndex) => 
         row.map((cell, cellIndex) => {
             if(cell !== 0){
-                // console.log(cell, search);
-                if(cell === parseInt(search)){
-                    // alert(":hi");
+                if(cell === search){
+
                     return(
                         <div className={"tree-node-div r" + rowIndex.toString() + "c" + cellIndex.toString() + " searched"} key={"r" + rowIndex.toString() + "c" + cellIndex.toString()}>
                             {/* {rowIndex.toString() + " " + cellIndex.toString()} */}
@@ -68,9 +70,7 @@ function Grid({grid, loading, setLoading, search}) {
     }
 
     
-  
     var zIndex = -1;
-
     var makeArrows = () => {
         return(
             grid.map((row, rowIndex) => {
@@ -146,19 +146,12 @@ function Grid({grid, loading, setLoading, search}) {
         )
     }
 
-    
 
-    return loading?(
+    return(
         <div className="tree-outer-div">
             <div className="tree-main-div">
                 {makeRows()}
-            </div>
-        </div>
-    ):(
-        <div className="tree-outer-div">
-            <div className="tree-main-div">
-                {makeRows()}
-                {makeArrows()}
+                {loading ? null : makeArrows() }
             </div>
         </div>
     )

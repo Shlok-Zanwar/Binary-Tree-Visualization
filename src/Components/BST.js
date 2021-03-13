@@ -21,6 +21,11 @@ function BST() {
     const [search, setSearch] = useState(-2);
 
     
+    useEffect(() => {
+        makeVisualTree();
+    }, [binaryTree])
+
+    
     const makeVisualTree = () => {
         var i, j, k;
         var myList = [];
@@ -41,6 +46,7 @@ function BST() {
         }
         setGrid(myList)
     }
+
 
     const insertToTree = (data) => {
         const newTree = [...binaryTree];
@@ -229,10 +235,10 @@ function BST() {
         data = parseInt(data);
         var i, j;
         // var newTree = [...binaryTree];
-        for(i = 0; i < height  && i < 6; i ++){
+        for(i = 0; i < height  && i <= 6; i ++){
             for(j = 0; j < binaryTree[i].length; j ++){
                 if(binaryTree[i][j] === data){
-                    enqueueSnackbar(data + " ound. Highlighted in green.", {
+                    enqueueSnackbar(data + " found. Highlighted in green.", {
                         variant: 'success',
                     });
                     return;
@@ -248,25 +254,26 @@ function BST() {
 
 
     const clearTree = () => {
-        var i, j;
-        var newTree = [...binaryTree];
-        for(i = 0; i <= 6; i++ ){
-            for(j = 0; j < newTree[i].length; j++ ){
-                newTree[i][j] = 0;
-            }
+        var newTree = [
+            [0],
+            [0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
+        if(height > 0 || grid.length > 0){
+            // console.log("doing");
+            setBinaryTree(newTree);
+            setGrid([]);
+            setHeight(0);
         }
-        setBinaryTree(newTree);
-        setGrid([]);
-        setHeight(0);
         enqueueSnackbar("Binary Tree Cleared.", {
             variant: 'success',
         });
     }
-
-
-    useEffect(() => {
-        makeVisualTree();
-    }, [binaryTree])
 
 
     const handleSubmit = (e) =>{
@@ -274,7 +281,6 @@ function BST() {
         var operation = e.target.value;
 
         if(operation === "ClearSearch"){
-            alert(1);
             setSearch(-2);
             setInput('');
             setLoading(true);
@@ -309,10 +315,9 @@ function BST() {
         }
         else if(operation === "Search"){
             setSearch(parseInt(input));
-            setLoading(true);
             searchInTree(input);
             setInput('');
-            
+            setLoading(true);
         }
         
     }
@@ -341,6 +346,7 @@ function BST() {
                 <button onClick={handleSubmit} className="refresh-button" value="ClearTree" >Clear Tree</button>
                 <button onClick={() => {setLoading(true)}} className="refresh-button">Refresh Lines</button>
                 <button onClick={() => {window.location.href = "https://github.com/Shlok-Zanwar/Binary-Tree-Visualization"}} className="refresh-button">Source Code</button>
+
             </div>
             <Grid grid={grid} loading={loading} setLoading={setLoading} search={search} />
         </div>

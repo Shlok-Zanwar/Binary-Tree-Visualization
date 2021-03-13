@@ -16,6 +16,7 @@ body {
   margin: 20px;
   padding-top: 10px;
   min-height: 85vh;
+  min-width: 1200px;
 }
 
 .form-div{
@@ -44,7 +45,7 @@ body {
 
 .rows{
   display: block;
-  margin-top: 20px;
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -75,7 +76,7 @@ body {
   background: none;
   border: transparent;
   /* border: 1px solid white; */
-  width: 30px;
+  width: 40px;
   height: 30px;
 }
 
@@ -166,4 +167,3 @@ input[type=number] {
   color: #fff;
   text-transform: capitalize;
 }
-
