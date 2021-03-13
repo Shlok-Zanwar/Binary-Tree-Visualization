@@ -10,7 +10,8 @@ function BST() {
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]);
     const [height, setHeight] = useState(0);
     const [grid, setGrid] = useState([]);
@@ -103,7 +104,9 @@ function BST() {
 
     const afterDeletePosi = (oldI, oldJ, newI, newJ, newTree) => {
         newTree[newI + 1][newJ*2] = newTree[oldI + 1][oldJ*2]; 
+        newTree[oldI + 1][oldJ*2] = 0;
         newTree[newI + 1][newJ*2 + 1] = newTree[oldI + 1][oldJ*2 + 1]; 
+        newTree[oldI + 1][oldJ*2 + 1] = 0;
         if(newTree[newI + 1][newJ*2] !== 0){
             newTree = afterDeletePosi(oldI + 1, oldJ*2, newI+1, newJ*2, newTree);
         }
@@ -244,6 +247,23 @@ function BST() {
     }
 
 
+    const clearTree = () => {
+        var i, j;
+        var newTree = [...binaryTree];
+        for(i = 0; i <= 6; i++ ){
+            for(j = 0; j < newTree[i].length; j++ ){
+                newTree[i][j] = 0;
+            }
+        }
+        setBinaryTree(newTree);
+        setGrid([]);
+        setHeight(0);
+        enqueueSnackbar("Binary Tree Cleared.", {
+            variant: 'success',
+        });
+    }
+
+
     useEffect(() => {
         makeVisualTree();
     }, [binaryTree])
@@ -255,6 +275,14 @@ function BST() {
 
         if(operation === "ClearSearch"){
             alert(1);
+            setSearch(-2);
+            setInput('');
+            setLoading(true);
+            return
+        }
+
+        if(operation === "ClearTree"){
+            clearTree();
             setSearch(-2);
             setInput('');
             setLoading(true);
@@ -310,6 +338,7 @@ function BST() {
                 <button onClick={handleSubmit} className="operation-button" value="Delete" >Delete</button>
                 <button onClick={handleSubmit} className="operation-button" value="Search" >Search</button>
                 <button onClick={handleSubmit} className="clear-button" value="ClearSearch" >Clear Search</button>
+                <button onClick={handleSubmit} className="refresh-button" value="ClearTree" >Clear Tree</button>
                 <button onClick={() => {setLoading(true)}} className="refresh-button">Refresh Lines</button>
                 <button onClick={() => {window.location.href = "https://github.com/Shlok-Zanwar/Binary-Tree-Visualization"}} className="refresh-button">Source Code</button>
             </div>
