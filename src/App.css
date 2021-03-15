@@ -17,7 +17,9 @@ body {
   padding-top: 10px;
   min-height: 85vh;
   min-width: 1200px;
+  animation: fadeIn 0.5s 1;
 }
+
 
 .form-div{
   padding-bottom: 0px;
@@ -34,20 +36,23 @@ body {
   padding-top: 20px;
 }
 
+
 .tree-main-div{
   text-align: center;
   width:max-content;
-  overflow: auto;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   z-index: 2;
 }
+
 
 .rows{
   display: block;
   margin-top: 40px;
   text-align: center;
 }
+
 
 .tree-node-div{
   display: inline-flex;
@@ -71,6 +76,7 @@ body {
   opacity: 0.99;
 }
 
+
 .transparent{
   background-color: transparent;
   background: none;
@@ -79,6 +85,7 @@ body {
   width: 40px;
   height: 30px;
 }
+
 
 .searched{
   background-color: rgb(84, 202, 29)  ;
@@ -89,6 +96,7 @@ body {
 );
 }
 
+
 .bst-form {
   margin-bottom: 32px;
   margin-left: 4px;
@@ -96,6 +104,7 @@ body {
   max-width: fit-content;
   display: inline-flex;
 }
+
 
 .operation-input{
   padding: 12px;
@@ -120,6 +129,7 @@ input[type=number] {
 -moz-appearance: textfield;
 }
 
+
 .operation-button{
   padding: 14px;
   border: none;
@@ -136,23 +146,8 @@ input[type=number] {
   text-transform: capitalize;
 }
 
-.clear-button{
-  padding: 14px;
-  border: none;
-  margin-left: 50px;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  background: linear-gradient(
-      90deg,
-      rgb(93, 187, 49) 0%,
-      rgb(84, 202, 29) 100%
-  );
-  color: #fff;
-  text-transform: capitalize;
-}
 
-.refresh-button{
+.function-button{
   padding: 14px;
   border: none;
   margin-left: 5px;
@@ -167,3 +162,4 @@ input[type=number] {
   color: #fff;
   text-transform: capitalize;
 }
+
