@@ -22,6 +22,7 @@ function BST() {
     const [input, setInput] = useState('');
     const { enqueueSnackbar } = useSnackbar();
     const [search, setSearch] = useState(-2);
+    const [showAnimation, setShowAnimation] = useState(true);
 
     
     useEffect(() => {
@@ -50,9 +51,29 @@ function BST() {
         setGrid(myList)
     }
 
+    var iForAnimation = 0; 
+    const createAnimation = (compare) => {
+        if(showAnimation){
+            setTimeout(function() { 
+                console.log('hello');   
+                setSearch(compare[iForAnimation]);
+                iForAnimation ++;                   
+                if (iForAnimation < compare.length) {          
+                createAnimation(compare);             
+                }               
+            }, 1000)
+        }
+        else{
+            setSearch(compare[compare.length - 1]);
+        }
+    }
+
 
     const insertToTree = (data) => {
         const newTree = [...binaryTree];
+        var compare = [];
+        const prevSearch = search;
+
         if(newTree[0][0] === 0 ){
             newTree[0][0] = parseInt(data);
             setBinaryTree(newTree);
@@ -75,9 +96,17 @@ function BST() {
                         variant: 'success',
                     });
                     // console.log(binaryTree, " ", height);
+                    compare.push(newTree[i][j]);
+                    compare.push(parseInt(data));
+                    compare.push(prevSearch);
+                    setSearch(compare[0]);
+                    compare.shift();
+                    iForAnimation = 0;
+                    createAnimation(compare);
                     return;
                 }
                 else{
+                    compare.push(newTree[i][j]);
                     j = 2*j;
                 }
             }
@@ -90,9 +119,17 @@ function BST() {
                         variant: 'success',
                     });
                     // console.log(binaryTree, " ", height);
+                    compare.push(newTree[i][j]);
+                    compare.push(parseInt(data));
+                    compare.push(prevSearch);
+                    setSearch(compare[0]);
+                    compare.shift();
+                    iForAnimation = 0;
+                    createAnimation(compare);
                     return;
                 }
                 else{
+                    compare.push(newTree[i][j]);
                     j = j*2 + 1 
                 }
             }
@@ -359,6 +396,13 @@ function BST() {
                     value="ClearTree" >
                         Clear Tree
                 </button>
+                
+                <span><Tooltip title='Show Animation' placement='bottom' arrow>
+                    <label className="switch">
+                        <input type="checkbox" checked={showAnimation} onChange={() => {setShowAnimation(!showAnimation)}} />
+                        <span className="slider round"></span>
+                    </label>
+                </Tooltip></span>
                 <Tooltip title='Source Code' placement='bottom' arrow>
                     <span>
                         <button onClick={() => {window.location.href = "https://github.com/Shlok-Zanwar/Binary-Tree-Visualization"}} className="function-button">
