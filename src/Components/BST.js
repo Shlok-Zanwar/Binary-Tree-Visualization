@@ -55,7 +55,7 @@ function BST() {
     const createAnimation = (compare) => {
         if(showAnimation){
             setTimeout(function() { 
-                console.log('hello');   
+                // console.log('hello');   
                 setSearch(compare[iForAnimation]);
                 iForAnimation ++;                   
                 if (iForAnimation < compare.length) {          

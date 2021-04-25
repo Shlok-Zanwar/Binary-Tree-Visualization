@@ -2,6 +2,7 @@ import './App.css';
 import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import BST from './Components/BST';
+import BSTree from './Components/BSTree';
 
 
 function BSTApp() {
@@ -15,7 +16,7 @@ function BSTApp() {
 
     return (
         <div className="App">
-            <BST />
+            <BSTree />
         </div>
     );
 }
